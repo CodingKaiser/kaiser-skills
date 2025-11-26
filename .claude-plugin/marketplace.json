@@ -25,7 +25,7 @@
       "skills": [
         "./shell-scripting.skill",
         "./r-development.skill",
-        "./python-style-guide.skill",
+        "./python-style-guide.skill"
       ]
     }
   ]
