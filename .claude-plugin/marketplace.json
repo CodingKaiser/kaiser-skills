@@ -23,9 +23,9 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./shell-scripting.skill",
-        "./r-development.skill",
-        "./python-style-guide.skill"
+        "./shell-scripting",
+        "./r-development",
+        "./python-style-guide"
       ]
     }
   ]
