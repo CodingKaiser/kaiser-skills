@@ -23,10 +23,10 @@
       "source": "./",
       "strict": false,
       "skills": [
-        "./shell-scripting",
-        "./r-development",
+	    "./shell-scripting",
+	    "./r-development",
         "./python-style-guide",
-	"./pixi
+		"./pixi"
       ]
     }
   ]
