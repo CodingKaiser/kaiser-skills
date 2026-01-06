@@ -111,6 +111,12 @@ main() {
 }
 ```
 
+## Snakemake & Shells
+
+- **Snakemake uses Bash**: By default, Snakemake executes `shell:` directives using `/bin/bash -euo pipefail`.
+- **Write Bash, not Fish**: Even if your terminal is Fish, write rule commands in standard Bash syntax.
+- **Strict Mode**: Snakemake enables strict mode automatically.
+
 ## Zsh-Specific Features
 
 When user specifies Zsh:

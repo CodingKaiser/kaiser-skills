@@ -16,17 +16,19 @@ Comprehensive guidelines for writing clean, maintainable Python code based on [G
 
 ### Imports
 
-Use `import` statements for packages and modules only, not for individual classes or functions.
+Use `import` statements for packages and modules in application code to avoid circular dependencies. For standard library and third-party packages, importing classes is acceptable.
 
 **Yes:**
 ```python
-from doctor.who import jodie
-import sound_effects.utils
+from pydantic import BaseModel  # Third-party: Class import OK
+from pathlib import Path        # Stdlib: Class import OK
+import sound_effects.utils      # App: Module import
+from myproject import config    # App: Module import
 ```
 
 **No:**
 ```python
-from sound_effects.utils import EffectsRegistry  # Don't import classes directly
+from myproject.utils import heavy_function  # App: Avoid direct function import if circular dep risk
 ```
 
 #### Import Formatting
@@ -166,7 +168,7 @@ sorted(data, key=get_timestamp)
 
 ### Line Length
 
-Maximum line length: 80 characters. Exceptions allowed for imports, URLs, and long strings that can't be broken.
+Maximum line length: 88 characters. Exceptions allowed for imports, URLs, and long strings that can't be broken.
 
 ### Indentation
 
@@ -300,18 +302,27 @@ x = "name: " + name + "; score: " + str(score)  # Avoid + for formatting
 
 #### Logging
 
-Use `%` formatting for logging, not f-strings (allows lazy evaluation):
+Use **Loguru** for logging with brace-style lazy formatting:
 
 ```python
-logging.info("Request from %s resulted in %d", ip_address, status_code)
+logger.info("Request from {} resulted in {}", ip_address, status_code)
 ```
+
+**Avoid** standard `logging` with `%` formatting.
 
 ### Files and Resources
 
-Always use context managers (`with` statements) for file operations:
+For simple text operations, prefer `pathlib` methods:
 
 ```python
-with open("file.txt") as f:
+data = Path("file.txt").read_text()
+Path("output.txt").write_text("content")
+```
+
+For complex operations or non-text files, use context managers:
+
+```python
+with open("image.png", "rb") as f:
     data = f.read()
 ```
 
@@ -452,11 +463,39 @@ def managed_resource(*args, **kwargs):
 
 ## Linting
 
-Run `pylint` on all Python code. Suppress warnings only when necessary with clear explanations:
+Run `ruff` (or `pylint`) on all Python code. Suppress warnings only when necessary:
 
 ```python
 dict = 'something'  # pylint: disable=redefined-builtin
 ```
+
+### Package `__init__.py` Files
+
+Keep `__init__.py` files empty. Do not put code in them.
+
+**Yes:**
+```python
+# __init__.py
+# (empty file)
+```
+
+**No:**
+```python
+# __init__.py
+from .module import MyClass  # Don't do this
+from .utils import helper_function  # Don't do this
+```
+
+### Preferred Libraries
+
+Use these libraries when applicable:
+
+| Purpose | Library |
+|---------|---------|
+| Data validation/models | `pydantic` |
+| Logging | `loguru` |
+| CLI | `cyclopts`, `rich` |
+| Testing | `pytest`, `pytest-mock` |
 
 ## Summary
 
@@ -471,7 +510,8 @@ When writing Python code:
 7. Use f-strings for formatting
 8. Always use context managers for resources
 9. Run pylint and fix issues
-10. **BE CONSISTENT** with existing code
+10. Keep `__init__.py` files empty
+11. **BE CONSISTENT** with existing code
 
 ## Additional Resources
 

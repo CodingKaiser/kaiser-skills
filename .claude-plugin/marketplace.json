@@ -15,6 +15,18 @@
       "source": "./",
       "strict": false,
       "skills": [
+        "./scverse"
+      ]
+    },
+    {
+      "name": "python-scientific",
+      "description": "Python skills for scientific computing and data visualization",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./python-style-guide",
+        "./marimo-development",
+        "./plotly"
       ]
     },
     {
@@ -27,7 +39,8 @@
 	    "./r-development",
             "./python-style-guide",
 	    "./pixi",
-	    "./marimo-development"
+	    "./marimo-development",
+	    "./plotly"
       ]
     }
   ]
