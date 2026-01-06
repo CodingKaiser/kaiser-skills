@@ -10,12 +10,24 @@
   },
   "plugins": [
     {
-      "name": "omics-skills",
-      "description": "A selection of omics skills",
+      "name": "marimo-skill",
+      "description": "Marimo notebook development",
       "source": "./",
-      "strict": false,
+      "skills": ["./marimo-development"]
+    },
+    {
+      "name": "python-skill",
+      "description": "Python style guide",
+      "source": "./",
+      "skills": ["./python-style-guide"]
+    },
+    {
+      "name": "python",
+      "description": "Python development with marimo and style guide",
+      "source": "./",
       "skills": [
-        "./scverse"
+        "./python-style-guide",
+        "./marimo-development"
       ]
     },
     {
@@ -26,21 +38,39 @@
       "skills": [
         "./python-style-guide",
         "./marimo-development",
-        "./plotly"
+        "./plotly",
+        "./scverse"
       ]
     },
     {
-      "name": "programming-skills",
-      "description": "Collection of skills used for various programming tasks",
+      "name": "r-skill",
+      "description": "R development",
       "source": "./",
-      "strict": false,
+      "skills": ["./r-development"]
+    },
+    {
+      "name": "shell-skill",
+      "description": "Shell scripting",
+      "source": "./",
+      "skills": ["./shell-scripting"]
+    },
+    {
+      "name": "pixi-skill",
+      "description": "Pixi package manager",
+      "source": "./",
+      "skills": ["./pixi"]
+    },
+    {
+      "name": "all-programming",
+      "description": "All programming skills bundled",
+      "source": "./",
       "skills": [
-	    "./shell-scripting",
-	    "./r-development",
-            "./python-style-guide",
-	    "./pixi",
-	    "./marimo-development",
-	    "./plotly"
+        "./shell-scripting",
+        "./r-development",
+        "./python-style-guide",
+        "./pixi",
+        "./marimo-development",
+        "./plotly"
       ]
     }
   ]
