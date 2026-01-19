@@ -348,6 +348,178 @@ if code in valid_codes:  # O(1) lookup
     ...
 ```
 
+## 21. Using Global Variables for State
+
+**Anti-pattern:**
+```python
+current_user = None  # Global state
+
+def login(username):
+    global current_user  # WRONG - hard to test, track, and debug
+    current_user = username
+
+def get_current_user():
+    return current_user
+```
+
+**Fix:**
+```python
+@dataclass
+class AppState:
+    current_user: str | None = None
+
+# Pass state explicitly or use dependency injection
+def login(state: AppState, username: str) -> None:
+    state.current_user = username
+
+# Or use a class
+class UserSession:
+    def __init__(self):
+        self._current_user: str | None = None
+
+    def login(self, username: str) -> None:
+        self._current_user = username
+
+    @property
+    def current_user(self) -> str | None:
+        return self._current_user
+```
+
+## 22. Star Imports
+
+**Anti-pattern:**
+```python
+from os.path import *  # WRONG - pollutes namespace, unclear what's imported
+from mymodule import *  # WRONG - can shadow builtins, hard to track
+
+join("a", "b")  # Where does this come from?
+```
+
+**Fix:**
+```python
+from os.path import join, exists, dirname
+# Or
+import os.path
+
+os.path.join("a", "b")  # Clear origin
+```
+
+**Why it's wrong:**
+- Pollutes the namespace with unknown names
+- Can shadow builtins or other imports
+- Makes code hard to read and debug
+- Breaks static analysis tools
+
+## 23. Circular Imports
+
+**Anti-pattern:**
+```python
+# module_a.py
+from module_b import func_b  # WRONG - circular dependency
+
+def func_a():
+    return func_b() + 1
+
+# module_b.py
+from module_a import func_a  # ImportError!
+
+def func_b():
+    return func_a() + 1
+```
+
+**Fixes:**
+
+1. **Import inside function** (quick fix):
+```python
+# module_a.py
+def func_a():
+    from module_b import func_b  # Deferred import
+    return func_b() + 1
+```
+
+2. **Restructure modules** (proper fix):
+```python
+# shared.py - extract shared functionality
+def base_func():
+    return 1
+
+# module_a.py
+from shared import base_func
+
+def func_a():
+    return base_func() + 1
+
+# module_b.py
+from shared import base_func
+
+def func_b():
+    return base_func() + 2
+```
+
+3. **Use TYPE_CHECKING for type hints**:
+```python
+from __future__ import annotations
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from module_b import ClassB  # Only imported for type checking
+
+def func_a(obj: ClassB) -> int:  # Works at runtime
+    ...
+```
+
+## 24. Catching and Ignoring Exceptions
+
+**Anti-pattern:**
+```python
+try:
+    result = risky_operation()
+except Exception:
+    pass  # WRONG - silently hides all errors
+
+try:
+    data = fetch_data()
+except:  # WRONG - catches KeyboardInterrupt, SystemExit
+    return None
+```
+
+**Fix:**
+```python
+try:
+    result = risky_operation()
+except SpecificError as e:
+    logger.warning("Operation failed, using default: {}", e)
+    result = default_value
+
+# If you must catch broadly, at least log
+try:
+    data = fetch_data()
+except Exception:
+    logger.exception("Unexpected error fetching data")
+    raise  # Re-raise after logging
+```
+
+## 25. Hardcoding Paths
+
+**Anti-pattern:**
+```python
+config = open("/home/user/project/config.json")  # WRONG - breaks on other machines
+output = open("C:\\Users\\name\\output.txt")  # WRONG - Windows-specific
+```
+
+**Fix:**
+```python
+from pathlib import Path
+
+# Relative to script/module
+CONFIG_PATH = Path(__file__).parent / "config.json"
+
+# Or use environment/config
+from os import environ
+DATA_DIR = Path(environ.get("DATA_DIR", "./data"))
+output_path = DATA_DIR / "output.txt"
+```
+
 ## Summary
 
 Key principles to avoid anti-patterns:

@@ -16,17 +16,19 @@ Comprehensive guidelines for writing clean, maintainable Python code based on [G
 
 ### Imports
 
-Use `import` statements for packages and modules only, not for individual classes or functions.
+Use `import` statements for packages and modules in application code to avoid circular dependencies. For standard library and third-party packages, importing classes is acceptable.
 
 **Yes:**
 ```python
-from doctor.who import jodie
-import sound_effects.utils
+from pydantic import BaseModel  # Third-party: Class import OK
+from pathlib import Path        # Stdlib: Class import OK
+import sound_effects.utils      # App: Module import
+from myproject import config    # App: Module import
 ```
 
 **No:**
 ```python
-from sound_effects.utils import EffectsRegistry  # Don't import classes directly
+from myproject.utils import heavy_function  # App: Avoid direct function import if circular dep risk
 ```
 
 #### Import Formatting
@@ -166,7 +168,7 @@ sorted(data, key=get_timestamp)
 
 ### Line Length
 
-Maximum line length: 80 characters. Exceptions allowed for imports, URLs, and long strings that can't be broken.
+Maximum line length: 88 characters. Exceptions allowed for imports, URLs, and long strings that can't be broken.
 
 ### Indentation
 
@@ -300,18 +302,27 @@ x = "name: " + name + "; score: " + str(score)  # Avoid + for formatting
 
 #### Logging
 
-Use `%` formatting for logging, not f-strings (allows lazy evaluation):
+Use **Loguru** for logging with brace-style lazy formatting:
 
 ```python
-logging.info("Request from %s resulted in %d", ip_address, status_code)
+logger.info("Request from {} resulted in {}", ip_address, status_code)
 ```
+
+**Avoid** standard `logging` with `%` formatting.
 
 ### Files and Resources
 
-Always use context managers (`with` statements) for file operations:
+For simple text operations, prefer `pathlib` methods:
 
 ```python
-with open("file.txt") as f:
+data = Path("file.txt").read_text()
+Path("output.txt").write_text("content")
+```
+
+For complex operations or non-text files, use context managers:
+
+```python
+with open("image.png", "rb") as f:
     data = f.read()
 ```
 
@@ -410,6 +421,93 @@ def foo(items: list[str]) -> dict[str, int]:
     ...
 ```
 
+## Modern Python Features
+
+### Match Statements (Python 3.10+)
+
+Use structural pattern matching for complex conditionals:
+
+```python
+def handle_response(response: dict) -> str:
+    match response:
+        case {"status": "ok", "data": data}:
+            return f"Success: {data}"
+        case {"status": "error", "message": msg}:
+            return f"Error: {msg}"
+        case {"status": status}:
+            return f"Unknown status: {status}"
+        case _:
+            return "Invalid response"
+```
+
+Pattern matching with types:
+
+```python
+def process(value: int | str | list) -> str:
+    match value:
+        case int(n) if n > 0:
+            return f"Positive int: {n}"
+        case int(n):
+            return f"Non-positive int: {n}"
+        case str(s):
+            return f"String: {s}"
+        case [first, *rest]:
+            return f"List starting with {first}"
+```
+
+### Dataclasses with Slots (Python 3.10+)
+
+Use `slots=True` for memory efficiency and faster attribute access:
+
+```python
+from dataclasses import dataclass
+
+@dataclass(slots=True)
+class Point:
+    x: float
+    y: float
+
+@dataclass(slots=True, frozen=True)
+class ImmutableConfig:
+    host: str
+    port: int
+    timeout: float = 30.0
+```
+
+### Postponed Annotation Evaluation
+
+Use `from __future__ import annotations` for:
+- Forward references without quotes
+- Faster module import (annotations not evaluated at definition time)
+
+```python
+from __future__ import annotations
+
+class Node:
+    def __init__(self, children: list[Node]) -> None:  # No quotes needed
+        self.children = children
+
+    def add_child(self, child: Node) -> None:
+        self.children.append(child)
+```
+
+### Exception Groups (Python 3.11+)
+
+Handle multiple exceptions simultaneously:
+
+```python
+try:
+    async with asyncio.TaskGroup() as tg:
+        tg.create_task(task1())
+        tg.create_task(task2())
+except* ValueError as eg:
+    for exc in eg.exceptions:
+        logger.error("ValueError: {}", exc)
+except* TypeError as eg:
+    for exc in eg.exceptions:
+        logger.error("TypeError: {}", exc)
+```
+
 ## Common Patterns
 
 ### Properties
@@ -452,11 +550,37 @@ def managed_resource(*args, **kwargs):
 
 ## Linting
 
-Run `pylint` on all Python code. Suppress warnings only when necessary with clear explanations:
+Run `ruff` on all Python code. Suppress warnings only when necessary:
 
 ```python
-dict = 'something'  # pylint: disable=redefined-builtin
+dict = 'something'  # noqa: A001
 ```
+
+### Package `__init__.py` Files
+
+**THERE MUST BE NO CODE IN `__init__.py` FILES.** Keep them empty.
+
+```python
+# __init__.py
+# This file should be empty
+```
+
+Import from modules directly:
+```python
+# Instead of: from mypackage import MyClass
+# Use: from mypackage.core import MyClass
+```
+
+### Preferred Libraries
+
+Use these libraries when applicable:
+
+| Purpose | Library |
+|---------|---------|
+| Data validation/models | `pydantic` |
+| Logging | `loguru` |
+| CLI | `cyclopts`, `rich` |
+| Testing | `pytest`, `pytest-mock` |
 
 ## Summary
 
@@ -470,8 +594,9 @@ When writing Python code:
 6. Prefer implicit false in boolean contexts
 7. Use f-strings for formatting
 8. Always use context managers for resources
-9. Run pylint and fix issues
-10. **BE CONSISTENT** with existing code
+9. Run `ruff check` and `ruff format`
+10. Keep `__init__.py` files empty
+11. **BE CONSISTENT** with existing code
 
 ## Additional Resources
 
