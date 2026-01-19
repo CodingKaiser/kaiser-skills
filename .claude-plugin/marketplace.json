@@ -10,12 +10,6 @@
   },
   "plugins": [
     {
-      "name": "marimo-skill",
-      "description": "Marimo notebook development",
-      "source": "./",
-      "skills": ["./marimo-development"]
-    },
-    {
       "name": "python-skill",
       "description": "Python style guide",
       "source": "./",
@@ -27,7 +21,7 @@
       "source": "./",
       "skills": [
         "./python-style-guide",
-        "./marimo-development"
+        "./marimo"
       ]
     },
     {
@@ -37,7 +31,7 @@
       "strict": false,
       "skills": [
         "./python-style-guide",
-        "./marimo-development",
+        "./marimo",
         "./plotly",
         "./scverse"
       ]
@@ -47,6 +41,12 @@
       "description": "R development",
       "source": "./",
       "skills": ["./r-development"]
+    },
+    {
+      "name": "marimo",
+      "description": "Compact marimo notebook patterns. Reactive cells, UI elements, data visualization.",
+      "source": "./",
+      "skills": ["./marimo"]
     },
     {
       "name": "shell-skill",
@@ -69,7 +69,7 @@
         "./r-development",
         "./python-style-guide",
         "./pixi",
-        "./marimo-development",
+        "./marimo",
         "./plotly"
       ]
     }
