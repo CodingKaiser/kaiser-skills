@@ -1,3 +1,8 @@
+---
+name: phosphoproteomics-ptm-analysis
+description: Guide for analyzing phosphoproteomics data using R, focusing on differential PTM abundance (DPA), differential PTM usage (DPU), and kinase enrichment analysis workflows.
+---
+
 # Phosphoproteomics PTM Analysis Skill
 
 This skill provides guidance for analyzing phosphoproteomics data using R, focusing on differential PTM abundance (DPA), differential PTM usage (DPU), and kinase enrichment analysis workflows.

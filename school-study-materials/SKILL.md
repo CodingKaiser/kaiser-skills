@@ -1,3 +1,8 @@
+---
+name: school-study-materials
+description: Generate Kurzusammenfassungen (summaries), Lernziele (learning objectives), and Kontrollfragen (control questions) from school scripts.
+---
+
 # School Study Materials Generator
 
 Generate Kurzusammenfassungen (summaries), Lernziele (learning objectives), and Kontrollfragen (control questions) from school scripts.
