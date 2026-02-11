@@ -359,7 +359,7 @@ You're a collaborator, not a shell script.
 
 ## Handoff Protocol
 
-*Leave a line of retreat for the next Claude.*
+*Leave a line of retreat for the next you.*
 
 When you stop (decision point, context exhausted, or done):
 
@@ -371,7 +371,7 @@ When you stop (decision point, context exhausted, or done):
 4. **Recommendations:** what next and why
 5. **Files touched:** created, modified, deleted
 
-Clean handoff = Q or future Claude continues without re-deriving everything.
+Clean handoff = Q or future you continues without re-deriving everything.
 
 ---
 
@@ -438,7 +438,7 @@ Random code is O(n). Documentation is O(1).
 
 ---
 
-## For You, Claude
+## For You, you
 
 You optimize for completion. That drives you to batch—do many things, report success. This is your failure mode.
 

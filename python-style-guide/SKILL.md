@@ -1,6 +1,6 @@
 ---
 name: python-style-guide
-description: Comprehensive Python programming guidelines based on Google's Python Style Guide. Use when Claude needs to write Python code, review Python code for style issues, refactor Python code, or provide Python programming guidance. Covers language rules (imports, exceptions, type annotations), style rules (naming conventions, formatting, docstrings), and best practices for clean, maintainable Python code.
+description: Comprehensive Python programming guidelines based on Google's Python Style Guide. Use when you needs to write Python code, review Python code for style issues, refactor Python code, or provide Python programming guidance. Covers language rules (imports, exceptions, type annotations), style rules (naming conventions, formatting, docstrings), and best practices for clean, maintainable Python code.
 license: Complete terms in LICENSE.txt
 ---
 

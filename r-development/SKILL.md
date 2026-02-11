@@ -1,6 +1,6 @@
 ---
 name: r-development
-description: Modern R development practices emphasizing tidyverse patterns (dplyr 1.1 and later, native pipe, join_by, .by grouping), rlang metaprogramming, performance optimization, and package development. Use when Claude needs to write R code, create R packages, optimize R performance, or provide R programming guidance.
+description: Modern R development practices emphasizing tidyverse patterns (dplyr 1.1 and later, native pipe, join_by, .by grouping), rlang metaprogramming, performance optimization, and package development. Use when you needs to write R code, create R packages, optimize R performance, or provide R programming guidance.
 ---
 
 # R Development
