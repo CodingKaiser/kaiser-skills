@@ -1,6 +1,6 @@
 ---
 name: rmd-formatting
-description: R Markdown formatting patterns: chunk display strategies (include=FALSE + inline R vs results='asis'), table rendering with knitr::kable, header hierarchy with tabsets, downloadable file embedding, and what to avoid (cat/print in visible chunks).
+description: "R Markdown formatting patterns: chunk display strategies (include=FALSE + inline R vs results='asis'), table rendering with knitr::kable, header hierarchy with tabsets, downloadable file embedding, and what to avoid (cat/print in visible chunks)."
 ---
 
 # R Markdown Report Formatting

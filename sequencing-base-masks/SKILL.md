@@ -1,6 +1,6 @@
 ---
 name: sequencing-base-masks
-description: Sequencing read requirements and bcl2fastq base masks for 10x Genomics libraries: chemistry-specific BasesMaskCR values, ATAC I2 barcode requirement (capital I not lowercase y), Visium FFPE vs frozen R2 length difference.
+description: "Sequencing read requirements and bcl2fastq base masks for 10x Genomics libraries: chemistry-specific BasesMaskCR values, ATAC I2 barcode requirement (capital I not lowercase y), Visium FFPE vs frozen R2 length difference."
 ---
 
 # Sequencing Read Requirements & Base Masks

@@ -1,6 +1,6 @@
 ---
 name: r-single-cell-plotting
-description: R plotting conventions for Seurat/scRNA-seq: UMAP square plots (aspect.ratio=1, raster=FALSE), polychrome cluster colors, DimPlot/FeaturePlot settings, saving 300 DPI PNG, volcano plots with EnhancedVolcano, statistical comparisons with rstatix/ggpubr.
+description: "R plotting conventions for Seurat/scRNA-seq: UMAP square plots (aspect.ratio=1, raster=FALSE), polychrome cluster colors, DimPlot/FeaturePlot settings, saving 300 DPI PNG, volcano plots with EnhancedVolcano, statistical comparisons with rstatix/ggpubr."
 ---
 
 # R Single-Cell Plotting Conventions
