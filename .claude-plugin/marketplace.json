@@ -17,7 +17,7 @@
     },
     {
       "name": "python-cli",
-      "description": "Python style guide",
+      "description": "Python CLIs",
       "source": "./",
       "skills": ["./python-cli-patterns"]
     },
