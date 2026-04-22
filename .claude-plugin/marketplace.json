@@ -10,13 +10,13 @@
   },
   "plugins": [
     {
-      "name": "python-skill",
+      "name": "python-style-guide",
       "description": "Python style guide",
       "source": "./",
       "skills": ["./python-style-guide"]
     },
     {
-      "name": "python",
+      "name": "python-marimo",
       "description": "Python development with marimo and style guide",
       "source": "./",
       "skills": [
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "name": "r-skill",
+      "name": "r",
       "description": "R development",
       "source": "./",
       "skills": ["./r-development"]
@@ -49,13 +49,13 @@
       "skills": ["./marimo"]
     },
     {
-      "name": "shell-skill",
+      "name": "shell",
       "description": "Shell scripting",
       "source": "./",
       "skills": ["./shell-scripting"]
     },
     {
-      "name": "pixi-skill",
+      "name": "pixi",
       "description": "Pixi package manager",
       "source": "./",
       "skills": ["./pixi"]
@@ -65,12 +65,11 @@
       "description": "All programming skills bundled",
       "source": "./",
       "skills": [
-        "./shell-scripting",
-        "./r-development",
         "./python-style-guide",
-        "./pixi",
+        "./r-development",
         "./marimo",
-        "./plotly"
+        "./shell",
+        "./pixi"
       ]
     }
   ]
