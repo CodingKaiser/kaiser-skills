@@ -68,7 +68,7 @@
         "./python-style-guide",
         "./r-development",
         "./marimo",
-        "./shell",
+        "./shell-scripting",
         "./pixi"
       ]
     }
