@@ -59,13 +59,13 @@ Create `~/.bfabricpy.yml`:
 PRODUCTION:
   login: your_username
   password: your_webservice_password  # NOT your login password
-  base_url: https://fgcz-bfabric.uzh.ch/bfabric
+  base_url: https://your-bfabric-instance/bfabric
 
 # Optional: test environment for integration testing
 TEST:
   login: your_username
   password: your_test_password
-  base_url: https://fgcz-bfabric-test.uzh.ch/bfabric
+  base_url: https://your-bfabric-test-instance/bfabric
 ```
 
 **Important**: The password is your B-Fabric web service password from your profile page, not your login password.

@@ -14,9 +14,8 @@ Master **pixi**, the modern package manager that unifies conda and PyPI ecosyste
 
 ### Setup
 ```bash
-# Installation must be performed separately
-# On the server, load via lmod if not already in path
-module load Dev/pixi
+# Install: curl -fsSL https://pixi.sh/install.sh | bash
+# (On FGCZ cluster: see pixi-fgcz skill for module + storage setup)
 
 # Initialize new project with pyproject.toml
 pixi init --format pyproject

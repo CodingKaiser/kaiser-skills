@@ -44,9 +44,37 @@
     },
     {
       "name": "r",
-      "description": "R development",
+      "description": "R development, plotting, and R Markdown formatting",
       "source": "./",
-      "skills": ["./r-development"]
+      "skills": [
+        "./r-development",
+        "./r-plotting",
+        "./rmd-formatting"
+      ]
+    },
+    {
+      "name": "rmd-formatting",
+      "description": "R Markdown formatting patterns",
+      "source": "./",
+      "skills": ["./rmd-formatting"]
+    },
+    {
+      "name": "r-plotting",
+      "description": "R single-cell plotting conventions (Seurat/UMAP, volcano plots, statistical comparisons)",
+      "source": "./",
+      "skills": ["./r-plotting"]
+    },
+    {
+      "name": "sequencing-base-masks",
+      "description": "10x Genomics base mask reference by chemistry",
+      "source": "./",
+      "skills": ["./sequencing-base-masks"]
+    },
+    {
+      "name": "bfabricpy",
+      "description": "Python interface to the B-Fabric LIMS",
+      "source": "./",
+      "skills": ["./bfabricpy"]
     },
     {
       "name": "marimo",
@@ -73,6 +101,8 @@
       "skills": [
         "./python-style-guide",
         "./r-development",
+        "./r-plotting",
+        "./rmd-formatting",
         "./marimo",
         "./shell-scripting",
         "./pixi"
