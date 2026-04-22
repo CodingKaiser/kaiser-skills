@@ -16,6 +16,12 @@
       "skills": ["./python-style-guide"]
     },
     {
+      "name": "python-cli",
+      "description": "Python style guide",
+      "source": "./",
+      "skills": ["./python-cli-patterns"]
+    },
+    {
       "name": "python-marimo",
       "description": "Python development with marimo and style guide",
       "source": "./",
