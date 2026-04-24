@@ -38,9 +38,7 @@
       "skills": [
         "./python-style-guide",
         "./marimo",
-        "./plotly",
-        "./scverse"
-      ]
+        "./plotly"      ]
     },
     {
       "name": "r",
