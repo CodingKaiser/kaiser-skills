@@ -22,15 +22,6 @@
       "skills": ["./python-cli-patterns"]
     },
     {
-      "name": "python-marimo",
-      "description": "Python development with marimo and style guide",
-      "source": "./",
-      "skills": [
-        "./python-style-guide",
-        "./marimo"
-      ]
-    },
-    {
       "name": "python-scientific",
       "description": "Python skills for scientific computing and data visualization",
       "source": "./",
@@ -38,7 +29,8 @@
       "skills": [
         "./python-style-guide",
         "./marimo",
-        "./plotly"      ]
+        "./plotly"
+      ]
     },
     {
       "name": "r",
