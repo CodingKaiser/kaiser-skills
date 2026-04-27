@@ -22,12 +22,11 @@
       "skills": ["./python-cli-patterns"]
     },
     {
-      "name": "python-scientific",
-      "description": "Scientific python workflows",
+      "name": "python-plotly",
+      "description": "Minimal instructions for using plotly in Python",
       "source": "./",
       "skills": [
-        "./python-style-guide",
-        "./pixi"
+        "./plotly"
       ]
     },
     {
