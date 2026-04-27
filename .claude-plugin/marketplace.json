@@ -22,6 +22,15 @@
       "skills": ["./python-cli-patterns"]
     },
     {
+      "name": "python-scientific",
+      "description": "Scientific python workflows",
+      "source": "./",
+      "skills": [
+        "./python-style-guide",
+        "./pixi"
+      ]
+    },
+    {
       "name": "r",
       "description": "R development, plotting, and R Markdown formatting",
       "source": "./",
