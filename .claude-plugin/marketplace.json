@@ -22,17 +22,6 @@
       "skills": ["./python-cli-patterns"]
     },
     {
-      "name": "python-scientific",
-      "description": "Python skills for scientific computing and data visualization",
-      "source": "./",
-      "strict": false,
-      "skills": [
-        "./python-style-guide",
-        "./marimo",
-        "./plotly"
-      ]
-    },
-    {
       "name": "r",
       "description": "R development, plotting, and R Markdown formatting",
       "source": "./",
@@ -41,18 +30,6 @@
         "./r-plotting",
         "./rmd-formatting"
       ]
-    },
-    {
-      "name": "rmd-formatting",
-      "description": "R Markdown formatting patterns",
-      "source": "./",
-      "skills": ["./rmd-formatting"]
-    },
-    {
-      "name": "r-plotting",
-      "description": "R single-cell plotting conventions (Seurat/UMAP, volcano plots, statistical comparisons)",
-      "source": "./",
-      "skills": ["./r-plotting"]
     },
     {
       "name": "sequencing-base-masks",
